@@ -8,9 +8,12 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: ["http://localhost:3000", process.env.CLIENT_URL],
+
     methods: ["GET", "POST"],
   },
 });
+
+console.log(["http://localhost:3000", process.env.CLIENT_URL]);
 
 export const getReceiverSocketId = (receiverId) => {
   return userSocketMap[receiverId];

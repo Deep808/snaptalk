@@ -16,7 +16,17 @@ dotenv.config();
 app.use(
   cors({
     credentials: true,
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: "*",
+    methods: ["GET", "PUT", "POST", "DELETE"],
+  })
+);
+
+app.options(
+  "",
+  cors({
+    credentials: true,
+    origin: "*",
+    methods: ["GET", "PUT", "POST", "DELETE"],
   })
 );
 
