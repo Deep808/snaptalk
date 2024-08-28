@@ -6,11 +6,10 @@ const generateTokenAndSetCookie = (userId, res) => {
   });
 
   res.cookie("token", token, {
-    // maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
-    httpOnly: true, // Cookie inaccessible via JavaScript
-    // secure: false, // Use true for production with HTTPS
-    // sameSite: "lax", // Adjust according to your needs
-    // path: "/", // Accessible site-wide
+    maxAge: 15 * 24 * 60 * 60 * 1000, // MS
+    httpOnly: true, // prevent XSS attacks cross-site scripting attacks
+    sameSite: "strict", // CSRF attacks cross-site request forgery attacks
+    secure: process.env.NODE_ENV !== "development",
   });
 };
 
